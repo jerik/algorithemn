@@ -1,6 +1,8 @@
 # see: https://github.com/egonschiele/grokking_algorithms
-import logging
-logging.basicConfig(filename='binary_search.log', level=logging.DEBUG)
+import logging, sys
+logfile = sys.argv[0].replace('.py', '.log')
+logging.basicConfig(filename=logfile, level=logging.DEBUG)
+# logging.debug(f'Step {i}: {guess}')
 
 
 def binary_search(mylist, item):
