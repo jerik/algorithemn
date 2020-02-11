@@ -21,13 +21,22 @@ def look_for_key(box):
             else:
                 logging.debug(f'-- found {len(item)} thing: {item[0]}')
 
+def countdown(i):
+    logging.debug(i)
+    if i <= 1:
+        return
+    else: 
+        countdown(i-1)
 
-logging.debug('I\'am looking for a key...')
-look_for_key(box)
+def main():
+    logging.debug('I\'am looking for a key...')
+    look_for_key(box)
+    # countdown(3)
+    # look_for_key2(box)
 
 
-'''
-def look_for_key(box):
+# hmmm not working as I expected... 
+def look_for_key2(box):
     global stack
     logging.debug(f'stack at the beginning {len(stack)}')
     put_box_on_stack(box)
@@ -37,13 +46,13 @@ def look_for_key(box):
     while stack:
         tookbox = stack.pop()
         for item in box:
-            logging.debug(f' Item size: {len(item)}')
-            if len(tookbox) > 1:
-                put_box_on_stack(tookbox)
-            else:
-                logging.debug(f'-- looking at the only item: {item}')
-
-
+            logging.debug(f'item size: {len(item)}')
+            if len(item) != 0:
+                if item[0] != 'key':
+                    logging.debug(f'item is not key')
+                    put_box_on_stack(tookbox)
+                else:
+                    logging.debug(f'-- found {len(item)} thing: {item[0]}')
 
 
 def put_box_on_stack(box):
@@ -55,5 +64,7 @@ def put_box_on_stack(box):
 
 
 # put_box_on_stack(box)
-look_for_key(box)
-'''
+# look_for_key(box)
+
+if __name__ == '__main__': 
+    main()
