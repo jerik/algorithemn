@@ -14,7 +14,22 @@ def main():
     # tupel()
     # tupelzuweisung()
     # testthis()
-    zufall()
+    # zufall()
+    listcomp()
+
+
+def listcomp():
+    town = [letter for letter in "Frankfurt"]
+    reihe = [int(zahl)**2 for zahl in "123456789"]
+    reihe = [zahl + 4 for zahl in range(1, 11)]
+    reihe = [zahl/4 for zahl in range(1, 100)]
+    buffer = reihe
+    hey(buffer)
+
+
+def hey(ho):
+    print(ho)
+    logging.debug(ho)
 
 
 def tupel():
