@@ -47,3 +47,11 @@ Source: https://www.kaggle.com/naveenraajan/regression-nyk-airbnb
 # Print e-number 
 
     print("%.35f" % 5.387e-35)
+
+# map a list as dict with numers
+
+    foo = ['North America', 'Asia', 'Africa', 'Europe', 'South America', 'Oceania', 'Antarctica', 'Seven seas (open ocean)']
+    {foo[x]:x for x in range(len(foo))}
+    # Out: {'North America': 0, 'Asia': 1, 'Africa': 2, 'Europe': 3, 'South America': 4, 'Oceania': 5, 'Antarctica': 6, 'Seven seas (open ocean)': 7}
+    
+
