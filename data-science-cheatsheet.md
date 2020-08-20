@@ -43,3 +43,7 @@ List all files:
 
 
 Source: https://www.kaggle.com/naveenraajan/regression-nyk-airbnb
+
+# Print e-number 
+
+    print("%.35f" % 5.387e-35)
