@@ -18,7 +18,12 @@ def main():
     # immutable_container()
     # basic_typed_arrays()
     # arr_of_bytes()
-    mutable_arr_of_bytes()
+    # mutable_arr_of_bytes()
+    # data_object_with_dicts()
+    # data_objects_with_dataclasses()
+    # data_objects_with_named_tuples()
+    # data_objects_with_named_tuples_from_typing()
+    data_objects_with_simple_namespace()
 
 
 def hey(ho):
@@ -162,7 +167,91 @@ def mutable_arr_of_bytes():
 # If you’re willing to go beyond the Python standard library, then third-party packages like NumPy and pandas offer a wide range of
 # fast array implementations for scientific computing and data science.
 
-# @todo to be continued...
+# mutable
+def data_object_with_dicts():
+    car1 = {
+        "color": "red",
+        "mileage": 3812.4,
+        "automatic": True
+     }
+    car2 = {
+        "color": "blue",
+        "mileage": 40321,
+        "automatic": False
+     }
+
+    hey(car2)
+    hey(car1)
+    hey(car1['mileage'])
+    # Dicts are mutable
+    car2['mileage'] = 12
+    car2['windshield'] = 'broken'
+    hey(car2)
+
+
+from dataclasses import dataclass
+@dataclass
+class Car:
+    color: str
+    mileage: float
+    automatic: bool
+
+
+# mutable
+def data_objects_with_dataclasses():
+    auto1 = Car("red", 3812.4, True)
+    hey(auto1)
+    hey(auto1.mileage)
+    auto1.mileage = 123
+    auto1.windshield = "broken"
+    hey(auto1)  # windshield ist not show up in the default representation, but is stored!
+    hey(auto1.windshield)
+    # More to dataclasses, see https://realpython.com/python-data-classes/
+
+
+# immutable
+from collections import namedtuple
+def data_objects_with_named_tuples():
+    Wagen = namedtuple('Wagen', "color mileage automatic")
+    wagen1 = Wagen("red", 3423.8, True)
+    hey(wagen1)
+    hey(wagen1.mileage)
+
+    
+# immutable
+from typing import NamedTuple
+class Vehicle(NamedTuple):
+    color: str
+    mileage: float
+    automatic: bool
+
+# immutable
+def data_objects_with_named_tuples_from_typing():
+    veh1 = Vehicle("red", 2343.2, True)
+    hey(veh1)
+    hey(veh1.mileage)
+    # Fields are immutable
+    # veh1.mileage = 12  # Throws error, not possible
+    # veh1.windshield = 'broken'  # Throws error, not possible
+
+# mutable
+from types import SimpleNamespace
+def data_objects_with_simple_namespace():
+    schiff = SimpleNamespace(color="red", mileage=2343.2, automatic=True)
+    hey(schiff)
+    hey(schiff.mileage)
+    schiff.mileage = 12
+    hey(schiff)
+    schiff.windshield = 'broken'
+    hey(schiff)
+    del(schiff.automatic)
+    hey(schiff)
+
+# @todo mit listen und dicts arbeiten, data_objects with dicts sind mutable, mit MappingProxyTpye erhält man ein readonly version
+
+# @todo weitermachen
+
+
 
 
 if __name__ == '__main__':
